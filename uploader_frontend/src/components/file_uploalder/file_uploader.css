@@ -1,0 +1,337 @@
+/* Container to center the upload status and success button */
+.upload-status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Style for error message */
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Style for success button */
+.success-button {
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.success-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.success-button .icon {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 18px; /* Adjust icon size */
+}
+
+/* Style for submit button */
+button[type="submit"] {
+    margin-top: 10px;
+    background-color: #007bff; /* Blue color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Style for file input container */
+.files {
+    position: relative;
+    
+
+}
+
+/* Style for file input */
+.files #upload  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 120px 0px 85px 45%;
+    text-align: center !important;
+    margin: 0 ;
+    width: 100% !important;
+    background-color: #f1f1f1; /* Background color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better look */
+   
+    
+}
+
+
+
+
+.files #upload :focus {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    border: 1px solid #92b0b3; /* Add a border on focus */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Highlight on focus */
+}
+
+/* Style for file input icon */
+.files:after {
+    pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 110px;
+    right: 0;
+    height: 56px;
+    content: "";
+    background-image: url('https://cdn-icons-png.flaticon.com/512/109/109612.png'); /* Updated icon */
+    display: block;
+    margin: 0 49%;
+    background-size: 50%; /* Adjust icon size */
+    background-repeat: no-repeat;
+}
+
+/* Style for file input placeholder text */
+.files:before {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: " or drag it here. ";
+    display: block;
+    margin: 0 auto;
+    color: #2ea591;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 16px; /* Adjust text size */
+}
+
+/* Styles for the new metadata fields */
+form {
+    margin-top: 20px;
+  }
+  
+  h2, h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+  }
+  
+  input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+ /* Success message styling */
+.upload-status {
+    color: green;
+    font-weight: bold; /* Make text bold */
+    background-color: #e7f4e4; /* Light green background for success */
+    border: 1px solid #d0e9d8; /* Slightly darker green border */
+    padding: 10px; /* Padding around the text */
+    border-radius: 4px; /* Rounded corners for the background */
+    margin-top: 10px;
+    display: inline-block; /* Ensures background only covers text */
+  }
+  
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Optional section styling */
+  h3 {
+    margin-top: 30px;
+  }
+  
+  input[type="text"]::placeholder {
+    color: #aaa;
+  }
+  
+  input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  /* Main container for the form, to display the two columns */
+/* Main container for the form */
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px; /* Ensure there's space after file upload */
+  }
+  
+  .form-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* File Upload section styling */
+  .form-group.files {
+    margin-bottom: 30px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  /* Smaller input fields with left-aligned text */
+  input[type="text"], textarea {
+    width: 50%; /* Default width for text inputs */
+    padding: 8px; /* Slightly smaller padding for better control */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    text-align: center; /* Ensure text starts from the left */
+  }
+  
+  /* Larger textarea styles */
+  textarea {
+    height: 150px; /* Increased height for textarea */
+    width: 70%; /* Increased width for textarea */
+    resize: vertical; /* Allow vertical resizing */
+  }
+  
+  /* File input field */
+  input[type="file"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 50%; /* Smaller file input field as well */
+  }
+  
+  /* Submit Button */
+  button[type="submit"] {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error and upload status messages */
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .upload-status {
+    color: green;
+    margin-top: 10px;
+  }
+  
+  /* Optional section styling */
+  input:focus, textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Optional adjustments */
+  @media (max-width: 768px) {
+    .form-container {
+      grid-template-columns: 1fr;
+    }
+  
+    input[type="text"], textarea, input[type="file"] {
+      width: 100%; /* Full width on smaller screens */
+    }
+  }
+  
+.form-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.optional-fields{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+/* Optional adjustments */
+@media (max-width: 768px) {
+  /* Stack columns on smaller screens */
+  .form-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+  
