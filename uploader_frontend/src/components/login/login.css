@@ -1,0 +1,70 @@
+
+
+/* Input field styling */
+  input[type="text"],
+  input[type="password"] {
+  padding: 8px;
+  width: 120px; /* Set input field width to be smaller */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #fff;
+  text-align: center;
+  margin-left: 10px; /* Add space between label and input */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Submit button */
+form button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Server response styling */
+.server-response {
+  margin-top: 20px;
+}
+
+.server-response h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.server-response ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.server-response ul li {
+  padding: 8px;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #555;
+}

@@ -2,9 +2,26 @@ import { useState, useRef } from "react";
 import "./file_uploader.css";
 
 export const FileUploader = ({ onSuccess }) => {
+  const getMetadataItems = async () => {
+    //const SERVER_URL = "http://141.99.126.94:5000/api/upload";
+    const SERVER_URL = "http://localhost:3002/metadata";
+
+    const response = await fetch(SERVER_URL, {
+      method: "GET",
+    });
+    const responseJson = await response.json();
+    return responseJson.items;
+  };
+
   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
   const [uploadStatus, setUploadStatus] = useState("");
+  const [metadataItems, setMetadataItems] = useState([]);
+
+  getMetadataItems().then((items) => {
+    setMetadataItems(items);
+  });
+  //setMetadataItems(getMetadataItems());
 
   // Refs for form fields
   const facility = useRef();
@@ -62,11 +79,20 @@ export const FileUploader = ({ onSuccess }) => {
 
     const data = new FormData();
     data.append("file", file);
+    //inputs => array
+
+    // inputsComponents [<input type, id/>, <input type, id/>, <input type, id/>, <input type, id/>,.... ]
+
+    //for(in = 0 ,inputsComponents.length, in++ )
+    //{
+    // data.append(inputsComponents[in].id, inputsComponents[in].value)
+    //}
+
     data.append("facility", facility.current.value);
     data.append("beam_line", beamLine.current.value);
     data.append("measurement_technique", measurementTechnique.current.value);
-    data.append("experiment_proposalId", experimentProposalId.current.value);
-    data.append("data_set_name", dataSetName.current.value);
+    data.append("experiment_proposal_id", experimentProposalId.current.value);
+    data.append("dataset_name", dataSetName.current.value);
     data.append("sample_information", sampleInformation.current.value);
     data.append("detector", detector.current.value);
     data.append(
@@ -124,66 +150,79 @@ export const FileUploader = ({ onSuccess }) => {
   };
 
   return (
-    <div>
-      <form method="post" action="#" id="#" onSubmit={onSubmit}>
-        {/* File Upload at the Top */}
-        <div className="form-group files">
-          <label className="input-label" htmlFor="file-upload">
-            Upload Your File
-          </label>
-          <input
-            id="upload"
-            type="file"
-            accept=".pdf, .jpg, .jpeg, .png, .txt"
-            onChange={onInputChange} // send event
-            className="form-control"
-            multiple={false} //to upload only one
-          />
+    <>
+      <div>
+        <div>
+          <h2> Amir</h2>
+          {metadataItems.map((item) => {
+            return (
+              <>
+                <label>{item.label}</label>
+                <input type={item.type} id={item.name} />
+              </>
+            );
+          })}
         </div>
-
-        {/* Error message if any */}
-        {error && <p className="error-message">{error}</p>}
-
-        {/* Success message if uploaded */}
-        {uploadStatus && <p className="upload-status">{uploadStatus}</p>}
-
-        <div className="form-container">
-          {/* Required Fields Section */}
-          <div className="form-column required-fields">
-            <h2>Required Metadata</h2>
-            <label>Facility</label>
-            <input type="text" ref={facility} required />
-            <label>Beamline</label>
-            <input type="text" ref={beamLine} required />
-            <label>Measurement Technique</label>
-            <input type="text" ref={measurementTechnique} required />
-            <label>Experiment Proposal ID</label>
-            <input type="text" ref={experimentProposalId} required />
-            <label>Data Set Name</label>
-            <input type="text" ref={dataSetName} required />
-            <label>Sample Information</label>
-            <textarea ref={sampleInformation} required />
+        <form method="post" action="#" id="#" onSubmit={onSubmit}>
+          {/* File Upload at the Top */}
+          <div className="form-group files">
+            <label className="input-label" htmlFor="file-upload">
+              Upload Your File
+            </label>
+            <input
+              id="upload"
+              type="file"
+              accept=".pdf, .jpg, .jpeg, .png, .txt"
+              onChange={onInputChange} // send event
+              className="form-control"
+              multiple={false} //to upload only one
+            />
           </div>
 
-          {/* Optional Fields Section */}
-          <div className="form-column optional-fields">
-            <h3>Optional Information</h3>
-            <label>Detector</label>
-            <input type="text" ref={detector} />
-            <label>Sample Detector Distance</label>
-            <input type="text" ref={sampleDetectorDistance} />
-            <label>Beam Energy</label>
-            <input type="text" ref={beamEnergy} />
-            <label>Pixel Size</label>
-            <input type="text" ref={pixelSize} />
-            <label>Description / Further Information</label>
-            <textarea ref={description} />
-          </div>
-        </div>
+          {/* Error message if any */}
+          {error && <p className="error-message">{error}</p>}
 
-        {/* Submit Button */}
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+          {/* Success message if uploaded */}
+          {uploadStatus && <p className="upload-status">{uploadStatus}</p>}
+
+          <div className="form-container">
+            {/* Required Fields Section */}
+            <div className="form-column required-fields">
+              <h2>Required Metadata</h2>
+              <label>Facility</label>
+              <input type="text" ref={facility} required />
+              <label>Beamline</label>
+              <input type="text" ref={beamLine} required />
+              <label>Measurement Technique</label>
+              <input type="text" ref={measurementTechnique} required />
+              <label>Experiment Proposal ID</label>
+              <input type="text" ref={experimentProposalId} required />
+              <label>Dataset Name</label>
+              <input type="text" ref={dataSetName} required />
+              <label>Sample Information</label>
+              <textarea ref={sampleInformation} required />
+            </div>
+
+            {/* Optional Fields Section */}
+            <div className="form-column optional-fields">
+              <h3>Optional Information</h3>
+              <label>Detector</label>
+              <input type="text" ref={detector} />
+              <label>Sample Detector Distance</label>
+              <input type="text" ref={sampleDetectorDistance} />
+              <label>Beam Energy</label>
+              <input type="text" ref={beamEnergy} />
+              <label>Pixel Size</label>
+              <input type="text" ref={pixelSize} />
+              <label>Description / Further Information</label>
+              <textarea ref={description} />
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </>
   );
 };
